@@ -32,5 +32,11 @@ RUN apt-get install --yes nodejs
 RUN apt-get install --yes build-essential
 
 # Install typescript (for SonarTS) -- STILL NOT WORKING
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 RUN npm install -g typescript
+
+# Install Yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+RUN apt-get update && apt-get install yarn
+RUN yarn --version
