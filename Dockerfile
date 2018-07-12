@@ -31,5 +31,5 @@ RUN curl --silent --location https://deb.nodesource.com/setup_8.x | sudo bash -
 RUN apt-get install --yes nodejs
 RUN apt-get install --yes build-essential
 
-# Install typescript (for SonarTS)
+# Install typescript (for SonarTS) -- STILL NOT WORKING
 RUN npm install -g typescript
