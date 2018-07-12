@@ -32,4 +32,5 @@ RUN apt-get install --yes nodejs
 RUN apt-get install --yes build-essential
 
 # Install typescript (for SonarTS) -- STILL NOT WORKING
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 RUN npm install -g typescript
