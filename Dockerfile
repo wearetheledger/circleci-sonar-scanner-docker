@@ -18,8 +18,15 @@ WORKDIR /project
 ADD run-sonar-scanner.sh /usr/bin/run-sonar-scanner
 CMD run-sonar-scanner
 
+# add sudo
+# https://github.com/tianon/docker-brew-ubuntu-core/issues/48
+RUN apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
+
+# add gnupg gnupg2 gnupg1
+RUN apt-get update && apt-get install -y gnupg gnupg2 gnupg1
+
 # Install Node.js
-RUN apt-get install --yes curl
-RUN curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
+RUN apt-get update && apt-get install --yes curl
+RUN curl --silent --location https://deb.nodesource.com/setup_8.x | sudo bash -
 RUN apt-get install --yes nodejs
 RUN apt-get install --yes build-essential
